@@ -3,21 +3,26 @@ using namespace std;
 
 class mystring
 {
+	int *pc;
 	int size;
 	char *elem;
 	public:
 		mystring (int s=0,char v=' ');
 		mystring (const mystring &a);
 		mystring (int s,char *arr);
+		~mystring();
 		int getsize(){ return size; }
 		mystring operator+(const mystring &a);
 		void operator=(const mystring &a);
 		int operator==(const mystring &a);
 		char &operator[](int i) const { return elem[i]; }
+		int check_copy(){ return (*pc); }
 		void display();
 };
 
 mystring::mystring(int s,char v){
+	pc=new int;
+	*pc=1;
 	size=s;
 	if(size)
 		elem=new char[size];
@@ -28,13 +33,18 @@ mystring::mystring(int s,char v){
 mystring::mystring (const mystring &a)
 {
 	size=a.size;
-	if(size)
+	pc=a.pc;
+	*pc=*pc+1;
+	if(size){
 		elem=new char[size];
-	for(int i=0;i<size;i++)
-		elem[i]=a[i];
+		for(int i=0;i<size;i++)
+			elem[i]=a[i];
+	}
 }
 mystring::mystring (int s,char *arr)
 {
+	pc=new int;
+	*pc=1;
 	size=s;
 	if(size){
 		elem=new char[size];
@@ -42,10 +52,19 @@ mystring::mystring (int s,char *arr)
 			elem[i]=arr[i];
 	}
 }
+mystring::~mystring()
+{
+	*pc=*pc-1;
+	if(*pc==0)
+		if(size!=0)
+			delete elem;
+}
 void mystring::operator=(const mystring& a)
 {
 	if(size)
 		delete elem;
+	pc=a.pc;
+	*pc=*pc+1;
 	size=a.size;
 	if(size)
 		elem=new char[size];
@@ -85,6 +104,8 @@ mystring mystring::operator+(const mystring &a){
 int main()
 {
 	mystring s1,s2;
+	mystring s339[100000];
+	int cnt=0;
 	int i,test,l1,l2;
 	char *a,*b;
 
@@ -93,7 +114,8 @@ int main()
 			<<"2. copy one string into another\n"
 			<<"3. concatenate two strings\n"
 			<<"4. check whether two strings are identical\n"
-			<<"5. Exit\n"
+			<<"5. check how many copies\n"
+			<<"6. Exit\n"
 			<<"Enter your choice : ";
 		cin>>test;
 		if(test==1){
@@ -107,6 +129,7 @@ int main()
 				cin>>a[i];
 			mystring s3(l1,a);
 			s1=s3;
+			//cout<<s1.check_copy()<<endl;
 			//s1.display();
 
 			do{
@@ -127,16 +150,18 @@ int main()
 				cout<<"initialize strings first...\n";
 				continue;
 			}
-			mystring s3,s4;
+			//mystring s3,s4;
 			if(s1.getsize()){
-				s3=s1;
+				s339[cnt]=s1;
 				cout<<"first string copied . \n";
-				s3.display();
+				s339[cnt].display();
+				cnt++;
 			}
 			if(s2.getsize()){
-				s4=s2;
+				s339[cnt]=s2;
 				cout<<"second string copied . \n";
-				s4.display();
+				s339[cnt].display();
+				cnt++;
 			}
 		}
 
@@ -159,7 +184,12 @@ int main()
 			else
 				cout<<"NOT equal\n";
 		}
-		else if(test==5){
+		else if(test==5)
+		{
+			cout<<"Copy of first string  : "<<s1.check_copy()<<endl;
+			cout<<"Copy of second string : "<<s2.check_copy()<<endl;
+		}
+		else if(test==6){
 			cout<<"exitting ...";
 			return 0;
 		}
