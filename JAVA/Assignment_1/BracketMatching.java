@@ -66,7 +66,7 @@ class matchingTest {
          } 
     } 
 }
- class BracketNatching{
+ class BracketMatching{
 	public static void main(String[] args) {
 		System.out.println("Enter bracket String : ");
 		Scanner sc=new Scanner(System.in);
