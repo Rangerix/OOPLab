@@ -1,123 +1,87 @@
 import java.io.*;
 import java.util.*;
-import java.text.*;
+import java.text.SimpleDateFormat;
 
 
-
-class fileComparatorDate implements Comparator<File>
+class comparename implements Comparator<File>
 {
-	public int compare(File f1, File f2){
-		return (int)(f1.lastModified()-f2.lastModified());
+	public int compare(File a,File b){
+		return a.getName().compareTo(b.getName());
+	}
+}
+class comparedates implements Comparator<File>
+{
+	public int compare(File a,File b){
+		return (int)(b.lastModified()-a.lastModified());
+	}
+}
+class comparesize implements Comparator<File>
+{
+	public int compare(File a,File b){
+		return (int)(a.length()-b.length());
 	}
 }
 
-class fileComparatorSize implements Comparator<File>
-{
-	public int compare(File f1, File f2){
-		return (int)(f1.length()-f2.length());
+class sortingFiles{
+	ArrayList<File> files=new ArrayList<File>();
+	void makeListFiles(String foldername){
+		File folder=new File(foldername);
+		for(File fileItr : folder.listFiles()){
+			/*if(fileItr.isDirectory()){
+				makeListFiles(fileItr);
+			}
+			else{*/
+				//System.out.println(fileItr.getName());
+				files.add(fileItr);
+			//} 
+		}
 	}
+	void sortbyname(){
+		Collections.sort(files,new comparename());
+	}
+	void sortbysize(){
+		Collections.sort(files,new comparesize());
+	}
+	void sortbydate(){
+		Collections.sort(files,new comparedates());
+	}
+	void display(){
+		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		System.out.println();
+		for(File f:files){
+			System.out.println(f.getName()+"\t\t"+sdf.format(f.lastModified())+"\t\t"+f.length()+"Bytes");
+		}
+	}
+
 }
 
-
-
-class FileSort
-{
-	ArrayList<File> files=new ArrayList<>();
-
-	public void fillList(String src)
-	{
-		File path=new File(src);
-		File[] fl=path.listFiles();
-		for(File f:fl)
-			files.add(f);
-	}
-
-	public void nameSort()
-	{
-		Collections.sort(files);
-	}
-
-	public void dateSort()
-	{
-		Collections.sort(files, new fileComparatorDate());
-	}
-
-	public void sizeSort()
-	{
-		Collections.sort(files , new fileComparatorSize());
-	}
-
-	public void display()
-	{
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-		for(File f:files)
-			System.out.println(f.getName()+"      "+sdf.format(f.lastModified())+"      "+(f.length()/1024)+" KB");
-	}
-}
-
-
-
-class file_Prob7
-{
-	public static void main(String[] args) 
-	{
-		if(args.length==1)
-		{
-			if(args[0].compareTo("-s")!=0 && args[0].compareTo("-d")!=0)
-			{
-				System.out.println("Invalid options");
+class file_Prob7{
+	public static void main(String[] args) {
+		if(args.length==1){
+			if(!args[0].equals("-s") && !args[0].equals("-d")){
+				System.out.println("Invalid options... use -s or -d");
 				return;
 			}
 		}
-		FileSort fs=new FileSort();
-
-		boolean flag=true;
 		Scanner sc=new Scanner(System.in);
-		String src="";
-		do
-		{
-			try
-			{
-				flag=true;
-				System.out.println("Enter name of directory");
-				src=sc.nextLine();
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-				flag=false;
-			}
-
-			
+		System.out.println("Enter folder name : ");
+		String name="";
+		try{
+			name=sc.nextLine();
+		} catch (Exception e){
+			System.out.println("Exception occurred : "+e);
 		}
-		while(!flag);
-
-		if(args.length==1)
-		{
-			if(args[0].compareTo("-s")==0)
-			{
-				fs.fillList(src);
-				fs.sizeSort();
-				fs.display();
-				return;
-			}
-			else
-				if(args[0].compareTo("-d")==0)
-				{
-					fs.fillList(src);
-					fs.dateSort();
-					fs.display();
-					return;
-				}
-				else
-					System.out.println("Invalid options");
+		sortingFiles f=new sortingFiles();
+		f.makeListFiles(name);
+		if(args.length==0){
+			f.sortbyname();
 		}
 		else{
-			fs.fillList(src);
-			fs.nameSort();
-			fs.display();
+			if(args[0].equals("-s"))
+				f.sortbysize();
+			else
+				f.sortbydate();
 		}
+		f.display();
 	}
 }
-
-
