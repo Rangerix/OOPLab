@@ -1,166 +1,124 @@
-import java.util.*;
-import java.util.zip.*;
 import java.io.*;
+import java.util.zip.*;
+import java.util.*;
+import java.nio.file.*;
 
+class zipfile{
+    void compressSingleFile(String filename){
+        try{
+            File file=new File(filename);
+            String zipFileName=filename+".zip";
 
-class Compress
-{
-    private static ArrayList<String> filesList=new ArrayList<String>();
+            FileOutputStream fos = new FileOutputStream(zipFileName);
+            ZipOutputStream zos = new ZipOutputStream(fos);
 
-    public static void gzipFile(String source, String destination)
-    {
-        try
-        {
-            FileOutputStream fos=new FileOutputStream(destination);
-            GZIPOutputStream gos=new GZIPOutputStream(fos);
-            FileInputStream fis=new FileInputStream(source);
+            zos.putNextEntry(new ZipEntry(file.getName()));
 
-            int length;
-            byte buffer[]=new byte[1024];
-            while((length=fis.read(buffer))>0)
-            {
-                gos.write(buffer,0,length);
-            }
-            fis.close();
-            gos.finish();
-            gos.close();
-            System.out.println("File compression successfull!");
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
-
-    }
-
-    public static void getFilesInList(File src)
-    {
-        File directory=new File(src.getAbsolutePath());
-        File[] flist=directory.listFiles();
-        for(File fl:flist)
-        {
-            if(fl.isFile())
-            {
-                filesList.add(fl.getAbsolutePath().substring(fl.getAbsolutePath().lastIndexOf('/')+1));
-            }
-            else
-            if(fl.isDirectory())
-            {
-                getFilesInList(fl);
-            }
-        }
-    }
-
-    public static void zipDirectory(File src, String destination)
-    {
-        try
-        {
-            getFilesInList(src);
-            FileOutputStream fos=new FileOutputStream(destination);
-            ZipOutputStream zos=new ZipOutputStream(fos);
-
-            for(String path:filesList)
-            {
-                System.out.println("Zipping "+path);
-                ZipEntry ze=new ZipEntry(path.substring(src.getAbsolutePath().length()+1,path.length()));//relative path
-                zos.putNextEntry(ze);
-                FileInputStream fis=new FileInputStream(path);
-                byte buffer[]=new byte[1024];
-                int len;
-                while((len=fis.read(buffer))>0)
-                    zos.write(buffer,0,len);
-                zos.closeEntry();
-                fis.close();
-            }
+            byte[] bytes = Files.readAllBytes(Paths.get(filename));
+            zos.write(bytes, 0, bytes.length);
+            zos.closeEntry();
             zos.close();
-            fos.close();
         }
-        catch(IOException e)
-        {
-            e.printStackTrace();
+        catch(FileNotFoundException e){
+            System.out.println("File not found");
+        }
+        catch(IOException e){
+            System.out.println("IOexception");
         }
     }
 }
 
-
-
-public class compress_prob8
-{
-    public static void main(String[] args) 
+class ZipDirectory{
+    void getAllFiles(File dir, List<File> fileList) 
     {
-        Scanner sc=new Scanner(System.in);
-        int ch;
-        boolean flag;
-        String fileName="";
-        File file=null;
-        do
-        {
-            System.out.println("1. Compress a single file using gzip\n2. Compress all files in directory\n3. Exit\nEnter choice");
-            ch=sc.nextInt();
-
-            switch(ch)
-            {
-                case 1:
-                do
-                {
-                    try
-                    {
-                        flag=true;
-                        System.out.println("Enter name of source file");
-                        fileName=sc.next();
-                        file=new File(fileName);
-
-                        if(!file.isFile())
-                        {
-                              System.out.println("Problem with file");
-                              flag=false;
-                        }
-                    }
-                    catch(Exception e)
-                    {
-                        e.printStackTrace();
-                        flag=false;
-                    }
+        try {
+            File[] files = dir.listFiles();
+            for (File file : files) {
+                fileList.add(file);
+                if (file.isDirectory()) {
+                    getAllFiles(file, fileList);
                 }
-                while(flag==false);
-                Compress.gzipFile(fileName,fileName+".gz");
-                break;
+                /* else {
+                }*/
+            }
+        } catch (Exception e) {
+            System.out.println("exceptionnnnnn "+e);
+        }
+    }    
+    void writeZipFile(File directoryToZip, List<File> fileList) 
+    {
+        try {
+            FileOutputStream fos = new FileOutputStream(directoryToZip.getName() + ".zip");
+            ZipOutputStream zos = new ZipOutputStream(fos);
 
-                case 2:
-                do
-                {
-                    try
-                    {
-                        flag=true;
-                        System.out.println("Enter name of source directory");
-                        fileName=sc.next();
-                        file=new File(fileName);
-                        if(!file.isDirectory())
-                        {
-                            System.out.println("Problem with directory");
-                            flag=false;
-                        }
-                    }
-                    catch(Exception e)
-                    {
-                        e.printStackTrace();
-                        flag=false;
-                    }
+            for (File file : fileList) {
+                if (!file.isDirectory()) { // we only zip files, not directories
+                    addToZip(directoryToZip, file, zos);
                 }
-                while(flag==false);
-                Compress.zipDirectory(file,"files2.zip");
-                break;
-
-                case 3:
-                System.out.println("Now quitting");
-                break;
-
-                default:
-                System.out.println("Invalid choice");
-
             }
 
+            zos.close();
+            fos.close();
         }
-        while(ch!=3);
+        catch (FileNotFoundException e) 
+        {
+            System.out.println("File not found");
+        }
+        catch (IOException e) 
+        {
+            System.out.println("IOException ");
+        }
+    }
+    void addToZip(File directoryToZip, File file, ZipOutputStream zos) throws FileNotFoundException,IOException 
+    {
+        FileInputStream fis = new FileInputStream(file);
+
+        String zipFilePath = file.getCanonicalPath().substring(directoryToZip.getCanonicalPath().length() + 1,file.getCanonicalPath().length());
+        System.out.println("Writing '" + zipFilePath + "' to zip file");
+        ZipEntry zipEntry = new ZipEntry(zipFilePath);
+        zos.putNextEntry(zipEntry);
+
+        byte[] bytes = new byte[1024];
+        int length;
+        while ((length = fis.read(bytes)) >= 0) {
+            zos.write(bytes, 0, length);
+        }
+
+        zos.closeEntry();
+        fis.close();
+    }
+}
+
+class compress_prob8{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int i;
+        System.out.print("1. file\n2. folder\nEnter choice : ");
+        i=sc.nextInt();
+        if(i==1){
+            try{
+                System.out.print("Enter filename : ");
+                Scanner scl=new Scanner(System.in);
+                String name=scl.nextLine();
+                File f=new File(name);
+                System.out.println("path : "+f.getAbsolutePath());
+                zipfile zf=new zipfile();
+                zf.compressSingleFile(name);
+            }
+            catch(Exception e){
+                System.out.println("Error occurred at main :"+e);
+            }
+        }
+        else if(i==2){
+                List<File> fileList = new ArrayList<File>();
+                System.out.print("Enter folder name : ");
+                Scanner scl=new Scanner(System.in);
+                String name=scl.nextLine();
+                File directoryToZip=new File(name);
+                ZipDirectory zp=new ZipDirectory();
+                zp.getAllFiles(directoryToZip, fileList);
+                zp.writeZipFile(directoryToZip, fileList);
+        }
+        
     }
 }
