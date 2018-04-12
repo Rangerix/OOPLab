@@ -13,66 +13,39 @@ class QuoteOfTheDay
     
     void fillmorning()
     {
-        morning = new ArrayList<String>();
-        morning.add("Some people dream of success, while other people get up every morning and make it happen--Wayne Huizenga");
-        morning.add("Success is not final, failure is not fatal: it is the courage to continue that counts--Winston Churchill");
-        morning.add("There are no secrets to success. It is the result of preparation, hard work, and learning from failure--Colin Powell");
-        morning.add("Put your heart, mind, and soul into even your smallest acts. This is the secret of success--Swami Sivananda");
-        morning.add("Success isn't always about greatness. It's about consistency. Consistent hard work leads to success. Greatness will come--Dwayne Johnson");
-        morning.add("Only I can change my life. No one can do it for me--Carol Burnett");
-        morning.add("Always be yourself, express yourself, have faith in yourself, do not go out and look for a successful personality and duplicate it--Brucce Lee");
-        morning.add("The price of success is hard work, dedication to the job at hand, and the determination that whether we win or lose, we have applied the best of ourselves to the task at hand--Vince Lombardi");
-        morning.add("Coming together is a beginning; keeping together is progress; working together is success--Henry Ford");
-        morning.add("Patience, persistence and perspiration make an unbeatable combination for success--Napoleon Hill"); 
-        morning.add("Be the change you want to see around you.--Mahatma Gandhi");      
-                
+        morning = new ArrayList<String>();   
+        morning.add("morning 1");
+        morning.add("morning 2");
+        morning.add("morning 3");
+        morning.add("morning 4");
+        morning.add("morning 5");
                 
     }
     
     void fillnoon()
     {
         noon = new ArrayList<String>();
-        noon.add("I'm never any good in the morning. It is only after four in the afternoon that I get going--Stephen Hawking");
-        noon.add("Think what a better world it would be if we all, the whole world, had cookies and milk about three o'clock every afternoon and then lay down on our blankets for a nap--Barbara Jordan");
-        noon.add("There are few hours in life more agreeable than the hour dedicated to the ceremony known as afternoon tea--Henry James");
-        noon.add("Late afternoon on the West Coast ends with the sky doing all its brilliant stuff--Joan Didion");
-        noon.add("Leave all the afternoon for exercise and recreation, which are as necessary as reading. I will rather say more necessary because health is worth more than learning--Thomas Jefferson");
-        noon.add("My mother always kept library books in the house, and one rainy Sunday afternoon - this was before television, and we didn't even have a radio - I picked up a book to look at the pictures and discovered I was reading and enjoying what I read--Beverly Clear");
-        noon.add("If you can spend a perfectly useless afternoon in a perfectly useless manner, you have learned how to live--Lin Yutang");
-        noon.add("The key to forming good habits is to make them part of your 'rituals.' I have a morning ritual, afternoon ritual, and Sunday ritual. It's one way to bundle good habits into regular times that you set aside to prepare yourself for the life you want. Rituals help you form habits--Lewis Howes");
-        noon.add("We all have these places where shy humiliations gambol on sunny afternoons--W. H. Auden");
-        noon.add("It took me seventeen years to get three thousand hits in baseball. I did it in one afternoon on the golf course--Hank Aaron");
+        noon.add("noon 1");
+        noon.add("noon 2");
+        noon.add("noon 3");
+        noon.add("noon 4");
+        noon.add("noon 5");
     }
     
     void fillevening()
     {
         eve = new ArrayList<String>();
-        eve.add("Prayer is the key of the morning and the bolt of the evening--Mahatma Gandhi");
-        eve.add("Friendship is the shadow of the evening, which increases with the setting sun of life--Jean de La Fontaine");
-        eve.add("Think in the morning. Act in the noon. Eat in the evening. Sleep in the night--William Blake");
-        eve.add("Evening is a time of real experimentation. You never want to look the same way--Donna Karan");
-        eve.add("O, thou art fairer than the evening air clad in the beauty of a thousand stars--Christopher Marlowe");
-        eve.add("The evening sings in a voice of amber, the dawn is surely coming--Al Stewart");
-        eve.add("Hide our ignorance as we will, an evening of wine soon reveals it--Heraclitus");
-        eve.add("There are worse things in life than death. Have you ever spent an evening with an insurance salesman?--Woody Allen");
-        eve.add("Probably the happiest period in life most frequently is in middle age, when the eager passions of youth are cooled, and the infirmities of age not yet begun; as we see that the shadows, which are at morning and evening so large, almost entirely disappear at midday--Eleanor Roosevelt");
-        eve.add("The way the world is, I think a silly evening in the theatre is a good thing, to take our minds off terror--Tim Curry");
+        eve.add("eve 1");
+        eve.add("eve 2");
+        eve.add("eve 3");
+        eve.add("eve 4");
+        eve.add("eve 5");
         
     }
     
     void fillnight()
     {
         night = new ArrayList<String>();
-        night.add("Loneliness adds beauty to life. It puts a special burn on sunsets and makes night air smell better--Henry Rollins");
-        night.add("There was never a night or a problem that could defeat sunrise or hope--Bernard Williams");
-        night.add("A day without sunshine is like, you know, night. Steve Martin");
-        night.add("I just want to say, good night, sweet prince, may flights of angels sing thee to thy rest--Harry Dean Stanton");
-        night.add("Do not go gentle into that good night but rage, rage against the dying of the light--Dylan Thomas");
-        night.add("I often think that the night is more alive and more richly colored than the day--Vincent Van Gogh");
-        night.add("My idea of a good night has always been having a lovely meal and a proper conversation--Kirsty Gallacher");
-        night.add("They who dream by day are cognizant of many things which escape those who dream only by night--Edgar Allan Poe");
-        night.add("Police officers put the badge on every morning, not knowing for sure if they'll come home at night to take it off--Tom Cotton");
-        night.add("We live between the act of awakening and the act of surrender. Each morning, we awaken to the light and the invitation to a new day in the world of time; each night, we surrender to the dark to be taken to play in the world of dreams where time is no more--John O'Donohue");
         
                   
     }
