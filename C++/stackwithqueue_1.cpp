@@ -1,57 +1,59 @@
+//IMPLEMENT A STACK USING TWO QUEUE 
 #include <iostream>
 #include <queue>
 using namespace std;
 
+template< typename T>
 class myStack{
-	int totalSize;
+	int size;
 	int capacity;
-	queue<float> q1,q2;
+	queue<T> q1,q2;												//two queues are used to implement stack
 	public:
-
-		myStack(){
-			totalSize=0;
-			capacity=(1<<30);
+		myStack(int l=1000){
+			size=0;
+			capacity=l;
 		}
-		int push(float x){
-			if(totalSize>=capacity)
+		int push(T x){
+			if(size>=capacity)
 				return 0;
-			totalSize++;
+			size++;
 			q2.push(x);
-			while(!q1.empty()){
-				q2.push(q1.front());
+			while(!q1.empty()){									//q1 is maintained in proper order of stack elements
+				q2.push(q1.front());							//q2 is used to maintain the order
 				q1.pop();
-			}
+			}													//q2 is kept empty
 			while(!q2.empty()){
 				q1.push(q2.front());
 				q2.pop();
 			}
 		}
-		int pop(){
-			if(totalSize<=0){
-				cout<<"Empty queue...\n";
-				return 0;
+		void pop(){
+			if(size<=0){
+				cout<<"Empty...\n";
+				return ;
 			}
+			cout<<"Removed element : "<<q1.front()<<endl;
 			q1.pop();
-			totalSize--;
+			size--;
 		}
 		int top(){
-			if(totalSize<=0){
-				cout<<"Empty queue...\n";
+			if(size<=0){
+				cout<<"Empty ...\n";
 				return -99999;
 			}	
 			cout<<q1.front()<<endl;
 		}
 		int isEmpty(){
-			if(totalSize<=0){
-				cout<<"Empty queue\n";
+			if(size<=0){
+				cout<<"Empty \n";
 				return 1;
 			}
 			cout<<"NOT empty\n";
 			return 0;
 		}
 		int getSize(){
-			cout<<"Number of elements = "<<totalSize<<endl;
-			return totalSize;
+			cout<<"Number of elements = "<<size<<endl;
+			return size;
 		}
 };
 
@@ -59,7 +61,7 @@ int main()
 {
 	int test;
 	float elem;
-	myStack st;
+	myStack<float> st;
 	while(1){
 		cout<<"1. push element\n"
 			<<"2. get top element\n"
@@ -93,6 +95,7 @@ int main()
 		else{
 			cout<<"Wrong entry, try again ... \n";
 		}
+		cout<<endl;
 	}
 	cout<<endl;
 return 0;

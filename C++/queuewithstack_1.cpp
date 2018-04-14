@@ -66,8 +66,8 @@ class myQueue{
 
 int main()
 {
-	myQueue<char> q;
-	char x;
+	myQueue<float> q;
+	float x;
 	int test;
 	while(1){
 		cout<<"1. Enqueue Element\n"
