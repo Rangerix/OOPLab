@@ -3,8 +3,9 @@
 #include <stack>
 using namespace std;
 
+template<typename T>
 class myQueue{
-	stack<float> s1,s2;											//two stacks are used ... 
+	stack<T> s1,s2;											//two stacks are used ... 
 	int size;													//elements present
 	int capacity;												//highest number of elements can be allocated
 	public:
@@ -12,7 +13,7 @@ class myQueue{
 			capacity=l;
 			size=0;
 		}
-		void Enqueue(float x){
+		void Enqueue(T x){
 			if(size==capacity){
 				cout<<"Queue is full";
 				return;
@@ -28,13 +29,14 @@ class myQueue{
 			}
 			size++;
 		}
-		float displayFirstElem(){
+		void displayFirstElem(){
 			if(size<1){
 				cout<<"Queue is empty \n";
 				return ;
+				//return -9999;
 			}
 			cout<<"Element : "<<s1.top()<<endl;
-			return s1.top();
+			//return s1.top();
 		}
 		void Dequeue(){
 			if(size<1){
@@ -64,8 +66,8 @@ class myQueue{
 
 int main()
 {
-	myQueue q;
-	float x;
+	myQueue<char> q;
+	char x;
 	int test;
 	while(1){
 		cout<<"1. Enqueue Element\n"
