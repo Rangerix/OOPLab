@@ -1,11 +1,12 @@
+//IMPLEMENT A QUEUE WITH TWO STACKS using STL <stack>
 #include <iostream>
 #include <stack>
 using namespace std;
 
 class myQueue{
-	stack<float> s1,s2;
-	int size;
-	int capacity;
+	stack<float> s1,s2;											//two stacks are used ... 
+	int size;													//elements present
+	int capacity;												//highest number of elements can be allocated
 	public:
 		myQueue(int l=1000){
 			capacity=l;
@@ -15,24 +16,25 @@ class myQueue{
 			if(size==capacity){
 				cout<<"Queue is full";
 				return;
-			}
-			while(!s1.empty()){
+			}													//numbers are stored in s1 in proper order
+			while(!s1.empty()){									//s2 is used to maintain this order
 				s2.push(s1.top());
 				s1.pop();
 			}
 			s1.push(x);
-			while(!s2.empty()){
+			while(!s2.empty()){									//s2 is kept empty
 				s1.push(s2.top());
 				s2.pop();
 			}
 			size++;
 		}
-		void displayFirstElem(){
+		float displayFirstElem(){
 			if(size<1){
 				cout<<"Queue is empty \n";
 				return ;
 			}
 			cout<<"Element : "<<s1.top()<<endl;
+			return s1.top();
 		}
 		void Dequeue(){
 			if(size<1){
