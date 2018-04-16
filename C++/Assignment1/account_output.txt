@@ -1,0 +1,158 @@
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 1
+Enter amount : 10000
+Enter name: Shyam
+account no = 10000
+
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 4
+enter account no : 3000
+NOT found
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 4
+enter account no : 10000
+Enter amount : 3000
+transaction successfully occurred ... 
+
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 4
+enter account no : 10000
+Enter amount : 5000
+transaction successfully occurred ... 
+
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 4
+enter account no : 10000
+Enter amount : 3000
+NOT possible
+
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 2
+Enter amount : 20
+Enter name: Madhu
+account no = 20000
+
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 3
+enter account no : 10000
+Enter amount : 600
+successfully deposited amount 600
+
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 4
+enter account no : 20000
+Enter amount : 6000
+transaction successfully occurred ... 
+
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 3
+enter account no : 20000
+Enter amount : 500  
+successfully deposited amount 500
+
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 4
+enter account no : 10000
+Enter amount : 1000
+transaction successfully occurred ... 
+
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 5
+enter account no : 10000
+name : Shyam
+ac no : 10000
+balance : 1600
+transaction history (if any) : 
+1 W  3000
+2 W  5000
+3 D  600
+4 W  1000
+
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 4
+enter account no : 10000
+Enter amount : 1200
+NOT possible
+
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 5
+enter account no : 20000
+name : Madhu
+ac no : 20000
+balance : -5480
+transaction history (if any) : 
+1 W  6000
+2 D  500
+
+1. Open new savings account 
+2. Open new current account
+3. Deposit money
+4. withdraw money
+5. see details
+6. Exit 
+Enter your choice : 6

@@ -29,21 +29,12 @@ void account::deposit(int x)
 
 void account::show_history()
 {
-	cout<<"name : "<<name<<endl;
-	cout<<"ac no : "<<ac_no<<endl;
-	cout<<"balance : "<<balance<<endl;
+	cout<<name<<endl;
+	cout<<ac_no<<endl;
+	cout<<balance<<endl;
 	int i;
-	cout<<"transaction history (if any) : "<<endl;
-	for(i=0;i<index;i++){
-		cout<<i+1<<" ";
-		int temp=record[i];
-		if(temp<0) {
-			cout<<"W";
-			temp=-temp;
-		}
-		else if(temp>0) cout<<"D";
-		cout<<"  "<<temp<<endl;
-	}
+	for(i=0;i<index;i++)
+		cout<<i+1<<"  "<<record[i]<<endl;
 }
 //savings account
 class savings:public account
@@ -106,7 +97,7 @@ int main()
 	int test,y,sno=0,cno=0;
 	while(1)
 	{
-		cout<<"\n1. Open new savings account \n"
+		cout<<"\n1. Open new saings account \n"
 			<<"2. Open new current account\n"
 			<<"3. Deposit money\n"
 			<<"4. withdraw money\n"
@@ -130,7 +121,7 @@ int main()
 			do{
 				cout<<"Enter amount : ";
 				cin>>y;
-			}while(y<-20000);
+			}while(y<-2000);
 			cout<<"Enter name: ";
 			cin>>name;
 			current t(name,y,cno);

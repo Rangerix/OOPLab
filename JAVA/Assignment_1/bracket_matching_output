@@ -1,0 +1,40 @@
+Enter bracket String : 
+[]
+matched 
+Quit ? (1/0) : 0
+Enter bracket String : 
+[{(
+NOT matched
+Quit ? (1/0) : 0
+Enter bracket String : 
+[{]}
+NOT matched
+Quit ? (1/0) : 0 
+Enter bracket String : 
+{{{{{
+NOT matched
+Quit ? (1/0) : 0
+Enter bracket String : 
+])}
+NOT matched
+Quit ? (1/0) : 0
+Enter bracket String : 
+]
+NOT matched
+Quit ? (1/0) : 0
+Enter bracket String : 
+(
+NOT matched
+Quit ? (1/0) : 0
+Enter bracket String : 
+{[]})
+NOT matched
+Quit ? (1/0) : 0 
+Enter bracket String : 
+(){}{
+NOT matched
+Quit ? (1/0) : 0
+Enter bracket String : 
+[{()}]
+matched 
+Quit ? (1/0) : 1
