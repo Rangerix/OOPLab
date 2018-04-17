@@ -1,0 +1,54 @@
+kkg@kkg-HP-Notebook:~/myfile/2nd_yr/OOPLab/JAVA/Assignment_1$ java compress_prob8 
+1. file
+2. folder
+Enter choice : 1
+Enter filename : abc.txt
+path : /home/kkg/myfile/2nd_yr/OOPLab/JAVA/Assignment_1/abc.txt
+
+=================================================================================
+kkg@kkg-HP-Notebook:~/myfile/2nd_yr/OOPLab/JAVA/Assignment_1$ java compress_prob8 
+1. file
+2. folder
+Enter choice : 2
+Enter folder name : FOLDER
+Writing 'abc.txt' to zip file
+Writing 'xty.txt' to zip file
+
+==================================================================================================
+kkg@kkg-HP-Notebook:~/myfile/2nd_yr/OOPLab/JAVA/Assignment_1$ java compress_prob8 
+1. file
+2. folder
+Enter choice : 2
+Enter folder name : /home/kkg/myfile/JAVA
+Writing 'draft/Quotes_Abstruct_Class.java' to zip file
+Writing 'draft/Patient_main.java' to zip file
+Writing 'draft/Quotes_For_Morning.java' to zip file
+Writing 'draft/ITEM_MAIN.java' to zip file
+Writing 'draft/Quotes_For_Night.java' to zip file
+Writing 'draft/Patient_Class.java' to zip file
+Writing 'draft/Doctor_Class.java' to zip file
+Writing 'draft/Compress.java' to zip file
+Writing 'draft/Main_QUOTE.java' to zip file
+Writing 'draft/Main_Hospital.java' to zip file
+Writing 'Assignment_1/FOLDER/abc.txt' to zip file
+Writing 'Assignment_1/FOLDER/xty.txt' to zip file
+Writing 'Assignment_1/quote_Prob4.java' to zip file
+Writing 'Assignment_1/QuoteOfTheDay.class' to zip file
+Writing 'Assignment_1/BracketMatching.java' to zip file
+Writing 'Assignment_1/files2.zip' to zip file
+Writing 'Assignment_1/file_Prob7.java' to zip file
+Writing 'Assignment_1/problem8/Compress_Main.class' to zip file
+Writing 'Assignment_1/problem8/Compress.class' to zip file
+Writing 'Assignment_1/item_Problem2.java' to zip file
+Writing 'Assignment_1/compress_Prob8.java' to zip file
+Writing 'Assignment_1/quote_Prob4.class' to zip file
+Writing 'java assignment1.pdf' to zip file
+
+================================================================================================
+
+kkg@kkg-HP-Notebook:~/myfile/2nd_yr/OOPLab/JAVA/Assignment_1$ java compress_prob8 
+1. file
+2. folder
+Enter choice : 1
+Enter filename : /home/kkg/myfile/zero_fact.c
+path : /home/kkg/myfile/zero_fact.c
