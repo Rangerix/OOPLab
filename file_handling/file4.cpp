@@ -11,6 +11,7 @@ int main()
 	fstream myfile(name);
 	streampos beg_file,end_file;
 	beg_file=myfile.tellg();
+	cout<<beg_file<<endl;
 	myfile.seekg(0,ios::end);
 	end_file=myfile.tellg();
 	cout<<(end_file-beg_file)<<endl;
