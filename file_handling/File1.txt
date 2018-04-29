@@ -1,0 +1,2 @@
+This is just opening a file and writing in it
+
