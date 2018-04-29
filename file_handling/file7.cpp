@@ -1,4 +1,4 @@
-// reading and writing objects in a file in binary mode using class
+// reading and writing and random access objects in a file in binary mode using class
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -32,6 +32,9 @@ class people{
 		}
 		char* getname(){
 			return name;
+		}
+		void display(){
+			cout<<name<<" "<<age<<" "<<salary<<endl;
 		}
 };
 
@@ -90,9 +93,31 @@ void findmaxsalary(void)
 	cout<<"Max case : "<<maxsalary<<" "<<holdername<<endl;
 }
 
+void randomaccess(void)
+{
+	char name[100];
+	ifstream myfile;
+	cout<<"File name : ";
+	cin>>name;
+	myfile.open(name,ios::in/*|ios::binary*/);
+	if(!myfile.is_open()){
+		cout<<"cannot open file\n";
+		return;
+	}
+	int x;
+	people p;
+	cout<<"Which member : ";
+	cin>>x;
+	myfile.seekg((streampos)(x*sizeof(p)),ios::beg);
+	myfile.read((char *)&p,sizeof(p));
+	p.display();
+	myfile.close();
+}
+
 int main()
 {
-	takeinput();
-	findmaxsalary();
+	//takeinput();
+	//findmaxsalary();
+	randomaccess();
 	return 0;
 }
