@@ -20,9 +20,6 @@ class student
 			roll=r;
 			score=f;
 		}
-		/*~student(){
-			delete (name);
-		}*/
 		int getroll(){
 			return roll;
 		}
